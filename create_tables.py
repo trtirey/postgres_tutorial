@@ -4,19 +4,19 @@ from config import load_config
 def create_tables():
 	commands = (
 		"""
-		CREATE TABLE vendors (
+		CREATE TABLE IF NOT EXISTS vendors (
 			vendor_id SERIAL PRIMARY KEY,
 			vendor_name VARCHAR(255) NOT NULL
 		)
 		""",
 		"""
-		CREATE TABLE parts (
+		CREATE TABLE IF NOT EXISTS parts (
 			part_id SERIAL PRIMARY KEY,
-			partn_name VARCHAR(255) NOT NULL
+			part_name VARCHAR(255) NOT NULL
 		)
 		""",
 		"""
-		CREATE TABLE part_drawings (
+		CREATE TABLE IF NOT EXISTS part_drawings (
 			part_id INTEGER PRIMARY KEY,
 			file_extension VARCHAR(5) NOT NULL,
 			drawing_data BYTEA NOT NULL,
@@ -26,7 +26,7 @@ def create_tables():
 		)
 		""",
 		"""
-		CREATE TABLE vendor_parts (
+		CREATE TABLE IF NOT EXISTS vendor_parts (
 			vendor_id INTEGER NOT NULL,
 			part_id INTEGER NOT NULL,
 			PRIMARY KEY (vendor_id, part_id),
