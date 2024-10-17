@@ -10,9 +10,9 @@ def get_parts(vendor_id):
     try:
         with p2.connect(**config) as conn:
             with conn.cursor() as cur:
-                cur = conn.cursor()
+                #cur = conn.curcor() 
                 # Note that get_parts_by_vendor is a user-defined function in the Postgres suppliers database
-                cur.callproc(get_parts_by_vendor, (vendor_id,))
+                cur.callproc('get_parts_by_vendor', [vendor_id,])
 
                 row = cur.fetchone()
                 while row is not None:
